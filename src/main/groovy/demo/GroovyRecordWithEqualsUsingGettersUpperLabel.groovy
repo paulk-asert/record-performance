@@ -13,8 +13,16 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package demo;
+package demo
 
-public record JavaRecordLabelUpper(String x0, String x1, String x2) {
-    public String x1() { return x1.toUpperCase(); }
+import groovy.transform.RecordOptions
+//import groovy.transform.RecordTypeMode
+import groovy.transform.TupleConstructor
+import groovy.transform.EqualsAndHashCode
+
+@RecordOptions(toList = false, toMap = false, size = false, getAt = false/*, mode = RecordTypeMode.EMULATE*/)
+@TupleConstructor(defaults = false, namedVariant = false)
+@EqualsAndHashCode//(useGetters = true)
+record GroovyRecordWithEqualsUsingGettersUpperLabel(String x0, String x1, String x2, String x3, String x4) {
+    String x1() { x1.toUpperCase() }
 }

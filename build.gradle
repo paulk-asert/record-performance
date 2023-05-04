@@ -1,3 +1,19 @@
+/*
+ * SPDX-License-Identifier: Apache-2.0
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     https://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 plugins {
     id 'io.freefair.lombok' version '8.0.1'
     id 'java-library'
@@ -9,13 +25,16 @@ plugins {
 
 repositories {
     mavenCentral()
-    mavenLocal()
+    maven {
+        url 'https://groovy.jfrog.io/artifactory/libs-release-local/'
+    }
+//    mavenLocal()
 }
 
 dependencies {
-//    compileOnly 'org.apache.groovy:groovy:4.0.12-SNAPSHOT'
-    implementation 'org.apache.groovy:groovy:4.0.12-SNAPSHOT'
-    testImplementation 'org.apache.groovy:groovy:4.0.12-SNAPSHOT'
+//    compileOnly 'org.apache.groovy:groovy:4.0.12'
+    implementation 'org.apache.groovy:groovy:4.0.12'
+    testImplementation 'org.apache.groovy:groovy:4.0.12'
     implementation 'org.scala-lang:scala-library:2.13.10'
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.9.2'
     testImplementation 'org.jetbrains.kotlin:kotlin-test-junit5'

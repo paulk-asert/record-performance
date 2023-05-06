@@ -47,6 +47,24 @@ tasks.named('test') {
     dependsOn compileScala
 }
 
+sourceSets {
+    main {
+        java {
+            if (!JavaVersion.current().isCompatibleWith(JavaVersion.VERSION_16)) {
+                exclude '**/JavaRecordLabel.java'
+                exclude '**/JavaRecordLabelUpper.java'
+            }
+        }
+    }
+    test {
+        java {
+            if (!JavaVersion.current().isCompatibleWith(JavaVersion.VERSION_16)) {
+                exclude '**/JavaHashCodeAndEqualsTest.java'
+            }
+        }
+    }
+}
+
 jmh {
     warmupIterations = 3
     iterations = 10

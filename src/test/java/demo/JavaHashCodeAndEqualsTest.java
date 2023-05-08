@@ -17,15 +17,18 @@ package demo;
 
 import org.junit.jupiter.api.Test;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class JavaHashCodeAndEqualsTest {
 
-    public static final JavaRecordLabel JAVA_RECORD_LABEL = new JavaRecordLabel("x0", "x1", "x2", "x3", "x4");
-    public static final JavaRecordLabel JAVA_RECORD_LABEL_2 = new JavaRecordLabel("x0", "X1", "x2", "x3", "x4");
-    public static final JavaRecordLabelUpper JAVA_RECORD_LABEL_UPPER = new JavaRecordLabelUpper("x0", "x1", "x2");
-    public static final JavaRecordLabelUpper JAVA_RECORD_LABEL_UPPER_2 = new JavaRecordLabelUpper("x0", "X1", "x2");
+    private static final JavaRecordLabel JAVA_RECORD_LABEL = new JavaRecordLabel("x0", "x1", "x2", "x3", "x4");
+    private static final JavaRecordLabel JAVA_RECORD_LABEL_2 = new JavaRecordLabel("x0", "X1", "x2", "x3", "x4");
+    private static final JavaRecordLabelUpper JAVA_RECORD_LABEL_UPPER
+        = new JavaRecordLabelUpper("a", "b", "c");
+    private static final JavaRecordLabelUpper JAVA_RECORD_LABEL_UPPER_2
+        = new JavaRecordLabelUpper("a", "B", "c");
 
     @Test
     void testJavaHashCodeImplementations() {
@@ -35,6 +38,10 @@ class JavaHashCodeAndEqualsTest {
     @Test
     void testJavaEqualsImplementations() {
         assertNotEquals(JAVA_RECORD_LABEL, JAVA_RECORD_LABEL_2);
+        assertEquals(JAVA_RECORD_LABEL_UPPER.x0(), JAVA_RECORD_LABEL_UPPER_2.x0());
+        assertEquals(JAVA_RECORD_LABEL_UPPER.x1(), JAVA_RECORD_LABEL_UPPER_2.x1());
+        assertEquals(JAVA_RECORD_LABEL_UPPER.x2(), JAVA_RECORD_LABEL_UPPER_2.x2());
+        assertNotEquals(JAVA_RECORD_LABEL_UPPER.hashCode(), JAVA_RECORD_LABEL_UPPER_2.hashCode());
         assertNotEquals(JAVA_RECORD_LABEL_UPPER, JAVA_RECORD_LABEL_UPPER_2);
     }
 }

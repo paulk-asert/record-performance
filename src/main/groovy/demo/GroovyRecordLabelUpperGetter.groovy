@@ -22,7 +22,7 @@ import groovy.transform.EqualsAndHashCode
 
 @RecordOptions(toList = false, toMap = false, size = false, getAt = false/*, mode = RecordTypeMode.EMULATE*/)
 @TupleConstructor(defaults = false, namedVariant = false)
-@EqualsAndHashCode//(useGetters = true)
-record GroovyRecordWithEqualsUsingGettersUpperLabel(String x0, String x1, String x2, String x3, String x4) {
+@EqualsAndHashCode
+record GroovyRecordLabelUpperGetter(String x0, String x1, String x2) {
     String x1() { x1.toUpperCase() }
 }

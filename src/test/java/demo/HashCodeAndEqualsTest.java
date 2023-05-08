@@ -23,17 +23,22 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class HashCodeAndEqualsTest {
 
-    public static final GroovyRecordLabel GROOVY_RECORD_LABEL = new GroovyRecordLabel("x0", "x1", "x2", "x3", "x4");
-    public static final GroovyRecordLabel GROOVY_RECORD_LABEL_2 = new GroovyRecordLabel("x0", "X1", "x2", "x3", "x4");
-    public static final GroovyRecordLabelUpper GROOVY_RECORD_LABEL_UPPER = new GroovyRecordLabelUpper("x0", "x1", "x2");
-    public static final GroovyRecordLabelUpper GROOVY_RECORD_LABEL_UPPER_2 = new GroovyRecordLabelUpper("x0", "X1", "x2");
-    public static final GroovyRecordWithEqualsUsingGettersUpperLabel GROOVY_RECORD_UPPER_GETTER_LABEL = new GroovyRecordWithEqualsUsingGettersUpperLabel("x0", "x1", "x2", "x3", "x4");
-    public static final GroovyRecordWithEqualsUsingGettersUpperLabel GROOVY_RECORD_UPPER_GETTER_LABEL_2 = new GroovyRecordWithEqualsUsingGettersUpperLabel("x0", "X1", "x2", "x3", "x4");
+    private static final GroovyRecordLabel GROOVY_RECORD_LABEL = new GroovyRecordLabel("x0", "x1", "x2", "x3", "x4");
+    private static final GroovyRecordLabel GROOVY_RECORD_LABEL_2 = new GroovyRecordLabel("x0", "X1", "x2", "x3", "x4");
+    private static final GroovyRecordLabelUpper GROOVY_RECORD_LABEL_UPPER = new GroovyRecordLabelUpper("a", "b", "c");
+    private static final GroovyRecordLabelUpper GROOVY_RECORD_LABEL_UPPER_2 = new GroovyRecordLabelUpper("a", "B", "c");
+    private static final GroovyRecordLabelUpperGetter GROOVY_RECORD_LABEL_UPPER_GETTER
+        = new GroovyRecordLabelUpperGetter("a", "b", "c");
+    private static final GroovyRecordLabelUpperGetter GROOVY_RECORD_LABEL_UPPER_GETTER_2
+        = new GroovyRecordLabelUpperGetter("a", "B", "c");
 
     @Test
     void testGroovyHashCodeImplementations() {
         assertTrue(GROOVY_RECORD_LABEL.hashCode() != 0);
         assertTrue(new GroovyEmulatedRecordLabel("x0", "x1", "x2", "x3", "x4").hashCode() != 0);
+        assertNotEquals(GROOVY_RECORD_LABEL_UPPER.hashCode(), GROOVY_RECORD_LABEL_UPPER_2.hashCode());
+        assertEquals(GROOVY_RECORD_LABEL_UPPER_GETTER.hashCode(),
+                     GROOVY_RECORD_LABEL_UPPER_GETTER_2.hashCode());
     }
     @Test
     void testLombokHashCodeImplementations() {
@@ -52,6 +57,6 @@ class HashCodeAndEqualsTest {
     void testGroovyEqualsImplementations() {
         assertNotEquals(GROOVY_RECORD_LABEL, GROOVY_RECORD_LABEL_2);
         assertNotEquals(GROOVY_RECORD_LABEL_UPPER, GROOVY_RECORD_LABEL_UPPER_2);
-        assertEquals(GROOVY_RECORD_UPPER_GETTER_LABEL, GROOVY_RECORD_UPPER_GETTER_LABEL_2);
+        assertEquals(GROOVY_RECORD_LABEL_UPPER_GETTER, GROOVY_RECORD_LABEL_UPPER_GETTER_2);
     }
 }

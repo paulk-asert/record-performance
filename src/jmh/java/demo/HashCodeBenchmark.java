@@ -29,6 +29,9 @@ public class HashCodeBenchmark {
     private static final String X4 = "XXXXX44444";
     private static final JavaRecordLabel JAVA_RECORD_LABEL = new JavaRecordLabel(X0, X1, X2, X3, X4);
     private static final GroovyRecordLabel GROOVY_RECORD_LABEL = new GroovyRecordLabel(X0, X1, X2, X3, X4);
+    private static final GroovyRecordScalaMurmur3Label GROOVY_RECORD_SCALA_MURMUR_3_LABEL = new GroovyRecordScalaMurmur3Label(X0, X1, X2, X3, X4);
+//    private static final GroovyRecordGuavaMurmur3Label GROOVY_RECORD_GUAVA_MURMUR_3_LABEL = new GroovyRecordGuavaMurmur3Label(X0, X1, X2, X3, X4);
+//    private static final GroovyRecordCommonsCodecMurmur3Label GROOVY_RECORD_COMMONS_CODEC_MURMUR_3_LABEL = new GroovyRecordCommonsCodecMurmur3Label(X0, X1, X2, X3, X4);
     private static final GroovyEmulatedRecordLabel GROOVY_EMULATED_RECORD_LABEL = new GroovyEmulatedRecordLabel(X0, X1, X2, X3, X4);
 //    private static final GroovyEmulatedRecordUsingGettersLabel GROOVY_EMULATED_RECORD_USING_GETTERS_LABEL = new GroovyEmulatedRecordUsingGettersLabel(X0, X1, X2, X3, X4);
     private static final LombokDataLabel LOMBOK_DATA_LABEL = new LombokDataLabel(X0, X1, X2, X3, X4);
@@ -49,6 +52,21 @@ public class HashCodeBenchmark {
     public void hashcodeGroovyEmulatedRecord(Blackhole bh) {
         bh.consume(GROOVY_EMULATED_RECORD_LABEL.hashCode());
     }
+
+    @Benchmark
+    public void hashcodeGroovyScalaMurmur3Record(Blackhole bh) {
+        bh.consume(GROOVY_RECORD_SCALA_MURMUR_3_LABEL.hashCode());
+    }
+
+//    @Benchmark
+//    public void hashcodeGroovyGuavaMurmur3Record(Blackhole bh) {
+//        bh.consume(GROOVY_RECORD_GUAVA_MURMUR_3_LABEL.hashCode());
+//    }
+
+//    @Benchmark
+//    public void hashcodeGroovyApacheMurmur3Record(Blackhole bh) {
+//        bh.consume(GROOVY_RECORD_COMMONS_CODEC_MURMUR_3_LABEL.hashCode());
+//    }
 
 //    @Benchmark
 //    public void hashcodeGroovyEmulatedGetterRecord(Blackhole bh) {

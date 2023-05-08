@@ -27,8 +27,6 @@ class HashCodeAndEqualsTest {
     public static final GroovyRecordLabel GROOVY_RECORD_LABEL_2 = new GroovyRecordLabel("x0", "X1", "x2", "x3", "x4");
     public static final GroovyRecordLabelUpper GROOVY_RECORD_LABEL_UPPER = new GroovyRecordLabelUpper("x0", "x1", "x2");
     public static final GroovyRecordLabelUpper GROOVY_RECORD_LABEL_UPPER_2 = new GroovyRecordLabelUpper("x0", "X1", "x2");
-    public static final GroovyEmulatedRecordLabel GROOVY_EMULATED_RECORD_LABEL = new GroovyEmulatedRecordLabel("x0", "x1", "x2", "x3", "x4");
-    public static final GroovyEmulatedRecordLabel GROOVY_EMULATED_RECORD_LABEL_2 = new GroovyEmulatedRecordLabel("x0", "X1", "x2", "x3", "x4");
     public static final GroovyRecordWithEqualsUsingGettersUpperLabel GROOVY_RECORD_UPPER_GETTER_LABEL = new GroovyRecordWithEqualsUsingGettersUpperLabel("x0", "x1", "x2", "x3", "x4");
     public static final GroovyRecordWithEqualsUsingGettersUpperLabel GROOVY_RECORD_UPPER_GETTER_LABEL_2 = new GroovyRecordWithEqualsUsingGettersUpperLabel("x0", "X1", "x2", "x3", "x4");
 

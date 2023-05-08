@@ -15,12 +15,23 @@
  */
 package demo
 
+import com.google.common.hash.HashFunction
+import com.google.common.hash.Hashing
 import groovy.transform.RecordOptions
 import groovy.transform.TupleConstructor
 
-// turn off some of the optional Groovy features - makes the bytecode easier to read, doesn't seem to impact performance
+import static org.apache.commons.codec.digest.MurmurHash3.hash32x86
+
 @RecordOptions(toList = false, toMap = false, size = false, getAt = false)
 @TupleConstructor(defaults = false, namedVariant = false)
-record GroovyRecordLabelUpper(String x0, String x1, String x2) {
-    String x1() { x1.toUpperCase() }
+record GroovyRecordCommonsCodecMurmur3Label(String x0, String x1, String x2, String x3, String x4) {
+    private static HashFunction murmur3 = Hashing.murmur3_32_fixed()
+
+    int hashCode() {
+        int result = hash32x86(x0.bytes)
+        result = 31 * result + hash32x86(x1.bytes)
+        result = 31 * result + hash32x86(x2.bytes)
+        result = 31 * result + hash32x86(x3.bytes)
+        31 * result + hash32x86(x4.bytes)
+    }
 }

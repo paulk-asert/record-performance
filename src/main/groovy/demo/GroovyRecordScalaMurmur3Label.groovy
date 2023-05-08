@@ -17,10 +17,13 @@ package demo
 
 import groovy.transform.RecordOptions
 import groovy.transform.TupleConstructor
+import scala.Tuple5
+import scala.runtime.ScalaRunTime
 
-// turn off some of the optional Groovy features - makes the bytecode easier to read, doesn't seem to impact performance
 @RecordOptions(toList = false, toMap = false, size = false, getAt = false)
 @TupleConstructor(defaults = false, namedVariant = false)
-record GroovyRecordLabelUpper(String x0, String x1, String x2) {
-    String x1() { x1.toUpperCase() }
+record GroovyRecordScalaMurmur3Label(String x0, String x1, String x2, String x3, String x4) {
+    int hashCode() {
+        ScalaRunTime._hashCode(new Tuple5<>(x0, x1, x2, x3, x4))
+    }
 }

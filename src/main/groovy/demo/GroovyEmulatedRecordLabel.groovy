@@ -20,6 +20,7 @@ import groovy.transform.RecordTypeMode
 import groovy.transform.TupleConstructor
 //import groovy.transform.EqualsAndHashCode
 
+// turn off some of the optional Groovy features - makes the bytecode easier to read, doesn't seem to impact performance
 @RecordOptions(toList = false, toMap = false, size = false, getAt = false, mode = RecordTypeMode.EMULATE)
 @TupleConstructor(defaults = false, namedVariant = false)
 //@EqualsAndHashCode(useGetters = true)

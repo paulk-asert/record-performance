@@ -28,15 +28,18 @@ repositories {
 //    maven {
 //        url 'https://groovy.jfrog.io/artifactory/libs-release-local/'
 //    }
+    maven {
+        url 'https://repository.apache.org/content/repositories/snapshots/'
+    }
 //    mavenLocal()
 }
 
 dependencies {
-    compileOnly 'org.apache.groovy:groovy:4.0.12'
+    compileOnly 'org.apache.groovy:groovy:4.0.13-SNAPSHOT'
 //    implementation 'org.apache.groovy:groovy:4.0.12'
     implementation 'com.google.guava:guava:31.1-jre'
     implementation 'commons-codec:commons-codec:1.15'
-    testImplementation 'org.apache.groovy:groovy:4.0.12'
+    testImplementation 'org.apache.groovy:groovy:4.0.13-SNAPSHOT'
     implementation 'org.scala-lang:scala-library:2.13.10'
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.9.2'
     testImplementation 'org.jetbrains.kotlin:kotlin-test-junit5'

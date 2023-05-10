@@ -35,6 +35,8 @@ public class EqualsBenchmark {
     private static final GroovyEmulatedRecordLabel GROOVY_EMULATED_RECORD_LABEL_2 = new GroovyEmulatedRecordLabel(X0, X1, X2, X3, X4);
     // private static final GroovyRecordWithEqualsUsingGettersUpperLabel GROOVY_RECORD_WITH_EQUALS_USING_GETTERS_UPPER_LABEL = new GroovyRecordWithEqualsUsingGettersUpperLabel(X0, X1, X2, X3, X4);
     // private static final GroovyRecordWithEqualsUsingGettersUpperLabel GROOVY_RECORD_WITH_EQUALS_USING_GETTERS_UPPER_LABEL_2 = new GroovyRecordWithEqualsUsingGettersUpperLabel(X0, X1, X2, X3, X4);
+    private static final LombokDirectDataLabel LOMBOK_DIRECT_DATA_LABEL = new LombokDirectDataLabel(X0, X1, X2, X3, X4);
+    private static final LombokDirectDataLabel LOMBOK_DIRECT_DATA_LABEL_2 = new LombokDirectDataLabel(X0, X1, X2, X3, X4);
     private static final LombokDataLabel LOMBOK_DATA_LABEL = new LombokDataLabel(X0, X1, X2, X3, X4);
     private static final LombokDataLabel LOMBOK_DATA_LABEL_2 = new LombokDataLabel(X0, X1, X2, X3, X4);
     private static final KotlinDataLabel KOTLIN_DATA_LABEL = new KotlinDataLabel(X0, X1, X2, X3, X4);
@@ -61,6 +63,11 @@ public class EqualsBenchmark {
 //    public void equalsGroovyEmulatedGetterRecord(Blackhole bh) {
 //        bh.consume(GROOVY_RECORD_WITH_EQUALS_USING_GETTERS_UPPER_LABEL.equals(GROOVY_RECORD_WITH_EQUALS_USING_GETTERS_UPPER_LABEL_2));
 //    }
+
+    @Benchmark
+    public void equalsLombokDirectDataLabel(Blackhole bh) {
+        bh.consume(LOMBOK_DIRECT_DATA_LABEL.equals(LOMBOK_DIRECT_DATA_LABEL_2));
+    }
 
     @Benchmark
     public void equalsLombokDataLabel(Blackhole bh) {

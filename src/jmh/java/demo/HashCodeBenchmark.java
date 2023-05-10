@@ -35,6 +35,7 @@ public class HashCodeBenchmark {
     private static final GroovyEmulatedRecordLabel GROOVY_EMULATED_RECORD_LABEL = new GroovyEmulatedRecordLabel(X0, X1, X2, X3, X4);
 //    private static final GroovyEmulatedRecordUsingGettersLabel GROOVY_EMULATED_RECORD_USING_GETTERS_LABEL = new GroovyEmulatedRecordUsingGettersLabel(X0, X1, X2, X3, X4);
     private static final LombokDataLabel LOMBOK_DATA_LABEL = new LombokDataLabel(X0, X1, X2, X3, X4);
+    private static final LombokDirectDataLabel LOMBOK_DIRECT_DATA_LABEL = new LombokDirectDataLabel(X0, X1, X2, X3, X4);
     private static final KotlinDataLabel KOTLIN_DATA_LABEL = new KotlinDataLabel(X0, X1, X2, X3, X4);
     private static final ScalaCaseLabel SCALA_CASE_LABEL = new ScalaCaseLabel(X0, X1, X2, X3, X4);
 
@@ -76,6 +77,11 @@ public class HashCodeBenchmark {
     @Benchmark
     public void hashcodeLombokDataLabel(Blackhole bh) {
         bh.consume(LOMBOK_DATA_LABEL.hashCode());
+    }
+
+    @Benchmark
+    public void hashcodeLombokDirectDataLabel(Blackhole bh) {
+        bh.consume(LOMBOK_DIRECT_DATA_LABEL.hashCode());
     }
 
     @Benchmark
